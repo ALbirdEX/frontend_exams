@@ -3,7 +3,7 @@ import './App.css';
 import Todo from "./Todo";
 import {useAppDispatch, useAppSelector} from "./state/store";
 import {Loader} from "./Loader";
-import {changeTodoTC, deleteTodolistTC} from "./state/todo-reducer";
+import {changeTodoTC} from "./state/todo-reducer";
 
 export function App() {
 
@@ -14,9 +14,7 @@ export function App() {
     const onChangeStatusHandler = (id: string, completed: boolean) => {
         dispatch(changeTodoTC(id, completed))
     }
-    const deleteTodolistHandler = (id: string) => {
-        dispatch(deleteTodolistTC(id))
-    }
+
     return (
         <div style={{padding: "300px"}}>
             {isLoading && <Loader/>}
@@ -30,8 +28,6 @@ export function App() {
                            onChange={() => onChangeStatusHandler(tl.id, !tl.completed)}/>
 
                     {tl.title}
-
-                    <button onClick={()=> deleteTodolistHandler(tl.id)}>Х</button>
                 </div>)}
 
             </div>
